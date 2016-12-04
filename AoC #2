@@ -1,0 +1,66 @@
+import java.io.*;
+
+public class AoC_Problem_2{
+   public static void main(String[] args) throws IOException{
+      BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+      
+      System.out.println("How many times will this run?");
+      int repeatNum = Integer.parseInt(console.readLine());
+                  
+      int xValue = 0;
+      int yValue = 0;
+      String answer = "";
+      
+      for(int i = 0; i < repeatNum; i++){
+         System.out.println("Input question here:");
+         String input = console.readLine();
+         String[] splitInput = input.split("");
+
+         for(int j = 0; j < input.length(); j++){         
+             if(splitInput[j].equals("U")){
+                yValue++;
+             }else if(splitInput[j].equals("D")){
+                yValue--;
+             }else if(splitInput[j].equals("R")){
+                xValue++;
+             }else if(splitInput[j].equals("L")){
+                xValue--;
+             }
+
+             if(xValue < -1){
+               xValue = -1;
+             }else if(xValue > 1){
+               xValue = 1;
+             }else if(yValue < -1){
+               yValue = -1;
+             }else if(yValue > 1){
+               yValue = 1;
+             }         
+         }
+         
+         if(xValue == -1 && yValue == 1){
+            answer += "1";
+         }else if(xValue == 0 && yValue == 1){
+            answer += "2";
+         }else if(xValue == 1 && yValue == 1){
+            answer += "3";
+         }else if(xValue == -1 && yValue == 0){
+            answer += "4";
+         }else if(xValue == 0 && yValue == 0){
+            answer += "5";
+         }else if(xValue == 1 && yValue == 0){
+            answer += "6";
+         }else if(xValue == -1 && yValue == -1){
+            answer += "7";
+         }else if(xValue == 0 && yValue == -1){
+            answer += "8";
+         }else if(xValue == 1 && yValue == -1){
+            answer += "9";
+         }
+         System.out.println("X Value: " + xValue);
+         System.out.println("Y Value: " + yValue);
+         System.out.println("Answer: " + answer);            
+      }
+      System.out.println("Final Answer: " + answer);     
+   }
+}
