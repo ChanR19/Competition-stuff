@@ -1,0 +1,76 @@
+//there are 2000 lines
+//PROBLEM: doesn't work if sequence is nested in another string
+package com.ryanchan;
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException{
+	// write your code here
+        BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
+        int numOfLines = Integer.parseInt(console.readLine());
+        int numThatSupportsTLS = 0;
+
+        for(int i = 0; i < numOfLines; i++){
+            String input = console.readLine();
+            List<String> stringsInBracket = new ArrayList<String>();
+            List<String> stringsOutsideBracket = new ArrayList<String>();
+            String[] splitInput = input.split("\\[");
+            List<String> splitInput2 = new ArrayList<String>();
+            boolean supportsTLS = false;
+            for(String string : splitInput){
+                try {
+                    String[] thing = string.split("\\]");
+                    splitInput2.add(thing[0]);
+                    splitInput2.add(thing[1]);
+                }catch(ArrayIndexOutOfBoundsException ex){
+                    //System.out.println(ex);
+                }
+            }
+            stringsOutsideBracket.add(splitInput2.get(0));
+            splitInput2.remove(0);
+            for(int j = 0; j < splitInput2.size(); j += 2){
+                stringsInBracket.add(splitInput2.get(j));
+                stringsOutsideBracket.add(splitInput2.get(j+1));
+            }
+
+            for(String string : stringsOutsideBracket){
+                String[] splitString = string.split("");
+                for(int j = 0; j < splitString.length; j += 2){
+                    try {
+                        if ((splitString[j] + splitString[j+1]).equals((splitString[j+3] + splitString[j+2]))) {
+                            supportsTLS = true;
+                            //System.out.println(supportsTLS);
+                            if((splitString[j].equals(splitString[j+1])) &&(splitString[j+3].equals(splitString[j+2]))){
+                                supportsTLS= false;
+                            }
+                        }
+                        //System.out.println(splitString[j] + splitString[j+1]);
+                        //System.out.println(splitString[j+2] + splitString[j+3]);
+                    }catch(ArrayIndexOutOfBoundsException ex){
+                        //System.out.println(ex);
+                    }
+                }
+            }
+
+            for(String string : stringsInBracket){
+                String[] splitString = string.split("");
+                for(int j = 0; j < splitString.length; j += 2){
+                    try {
+                        if ((splitString[j] + splitString[j+1]).equals((splitString[j+3] + splitString[j+2]))) {
+                            supportsTLS = false;
+                            //System.out.println(supportsTLS);
+                        }
+                    }catch(ArrayIndexOutOfBoundsException ex){
+                        //System.out.println(ex);
+                    }
+                }
+            }
+            if(supportsTLS){
+                numThatSupportsTLS++;
+            }
+        }
+        System.out.println(numThatSupportsTLS);
+    }
+}
