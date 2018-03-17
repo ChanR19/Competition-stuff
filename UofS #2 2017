@@ -1,0 +1,104 @@
+runs = int(input())
+
+for i in range(runs):
+  inp = int(input())
+  
+  top_sides = "+"
+  for j in range((inp*2) - 1):
+    top_sides += "-"
+  top_sides += "+"
+  
+  print(top_sides)
+  
+  #making part 1
+  for j in range(0,inp):
+    pt1 = "|"
+    
+    for k in range(inp-1-j): #number of spaces = input - 1 - j
+      pt1 += " "
+    
+    for k in range(j): #number of / = j
+      pt1 += "/"
+      
+    pt1 += "*"
+    
+    for k in range(j): #number of \ = j
+      pt1 += "\\" # you need \\ to print 1 \
+      
+    for k in range(inp-1-j): #number of spaces = input - 1 - j
+      pt1 += " "
+    
+    pt1 += "|"
+    print(pt1)
+  #making part 2
+  for j in range(0,inp):
+    pt2 = "|"
+    
+    for k in range(j): #number of spaces= j
+      pt2 += " "
+    
+    for k in range(inp-1-j):#number of \ = input - 1 - j
+      pt2 += "\\"
+  
+      
+    pt2 += "*"
+    
+    for k in range(inp-1-j):#number of / = input - 1 - j
+      pt2 += "/"
+    
+    for k in range(j):#number of spaces= j
+      pt2 += " "
+    
+    pt2 += "|"
+    print(pt2)
+  
+  print(top_sides)
+  
+  #making part 3 (same as part 2)
+  for j in range(0,inp):
+    pt2 = "|"
+    
+    for k in range(j):
+      pt2 += " "
+    
+    for k in range(inp-1-j):
+      pt2 += "\\"
+  
+      
+    pt2 += "*"
+    
+    for k in range(inp-1-j):
+      pt2 += "/"
+    
+    for k in range(j):
+      pt2 += " "
+    
+    pt2 += "|"
+    print(pt2)
+    
+    
+  #making part 4 (same as part 1)
+  for j in range(0,inp):
+    pt1 = "|"
+    
+    for k in range(inp-1-j):
+      pt1 += " "
+    
+    for k in range(j):
+      pt1 += "/"
+      
+    pt1 += "*"
+    
+    for k in range(j):
+      pt1 += "\\" # you need \\ to print 1 \
+      
+    for k in range(inp-1-j):
+      pt1 += " "
+    
+    pt1 += "|"
+    print(pt1)
+  
+  print(top_sides)
+  
+#finished in 35 mins
+    
