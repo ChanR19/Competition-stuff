@@ -1,0 +1,29 @@
+runs = int(input())
+
+for i in range(runs):
+  num_of_seq = int(input())
+  
+  raw_input = input()
+  split_input = raw_input.split(" ")
+  
+  output = ""
+  run = []
+  for j in range(num_of_seq):
+    if j != (num_of_seq - 1) and split_input[j+1] == split_input[j]:
+      run.append(split_input[j+1])
+    else:
+      run.append(split_input[j])
+      if run[0] != "0" and len(run) <= 3:
+        for k in range(len(run)): #converts the list to a string
+          output += run[k] + " "
+      elif run[0] != "0" and len(run) >= 4:
+        output += "0 " + str(len(run)) + " " + run[0] + " "
+      elif run[0] == "0" and len(run) >= 2:
+        output += "0 " + str(len(run)) + " " + run[0] + " "
+      elif run[0] == "0" and len(run) == 1:
+        output += "0 0 "
+      run = [] #clear run
+  print(raw_input)
+  print(output)
+  
+  #finished in 34 mins
