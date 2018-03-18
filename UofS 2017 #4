@@ -1,0 +1,40 @@
+runs = int(input())
+
+for i in range(runs):
+  raw_input = input()
+  split_input = raw_input.split(" ")
+  out_x = 0.0
+  out_y = 0.0
+  
+  if split_input[0] == split_input[2]:
+    out_x = float(split_input[0])
+    m2= (float(split_input[7]) - float(split_input[5]))/(float(split_input[6]) - float(split_input[4]))
+    b2 = float(split_input[7])-(m2*float(split_input[6]))
+    out_y = m2*out_x+b2
+  elif split_input[4] == split_input[6]:
+    out_x = float(split_input[4])
+    m1 = (float(split_input[3]) - float(split_input[1]))/(float(split_input[2]) - float(split_input[0]))
+    b1 = float(split_input[1])-(m1*float(split_input[0]))
+    out_y = m1*out_x+b1
+  elif split_input[1] == split_input[3]:
+    out_y = float(split_input[1])
+    m2= (float(split_input[7]) - float(split_input[5]))/(float(split_input[6]) - float(split_input[4]))
+    b2 = float(split_input[7])-(m2*float(split_input[6]))
+    out_x = (out_y - b2)/m2
+  elif split_input[5] == split_input[7]:
+    out_y = float(split_input[5])
+    m1 = (float(split_input[3]) - float(split_input[1]))/(float(split_input[2]) - float(split_input[0]))
+    b1 = float(split_input[1])-(m1*float(split_input[0]))
+    out_x = (out_y - b1)/m1
+  else:
+    m1 = (float(split_input[3]) - float(split_input[1]))/(float(split_input[2]) - float(split_input[0]))
+    m2= (float(split_input[7]) - float(split_input[5]))/(float(split_input[6]) - float(split_input[4]))
+    b1 = float(split_input[1])-(m1*float(split_input[0]))
+    b2 = float(split_input[7])-(m2*float(split_input[6]))
+    out_x = (b2-b1)/(m1-m2)
+    out_y = m1*out_x+b1
+  print("("+str(out_x)+","+str(out_y)+")")
+        
+        
+    
+    
