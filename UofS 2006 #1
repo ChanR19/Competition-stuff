@@ -1,0 +1,14 @@
+runs = int(input())
+
+for i in range(runs):
+  num = int(input())
+  sum = 0
+  for i in range(1,num):
+    if num%i == 0:
+      sum += i
+  if sum == num:
+    print(str(num) + " is perfect")
+  elif sum > num:
+    print(str(num) + " is abundant")
+  elif sum < num:
+    print(str(num) + " is deficient")
