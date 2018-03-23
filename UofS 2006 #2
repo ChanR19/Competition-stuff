@@ -1,0 +1,26 @@
+runs = int(input())
+alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",]
+
+for i in range(runs):
+  raw_input = input().lower()
+  runs2 = int(input())
+  for j in range(runs2):
+    letters = list(raw_input)
+    raw_input_2 = input()
+    input_processed = raw_input_2.lower().replace(" ","")
+    letters2 = list(input_processed)
+    for letter in letters2:
+      if letter not in alphabet:
+        letters2.remove(letter)
+
+    good = False
+    for k in range(len(letters2)):
+      if letters2[k] in letters:
+        letters.remove(letters2[k])
+        good = True
+      else:
+        print(raw_input_2 + " : NO")
+        good = False
+        break
+    if good == True:
+      print(raw_input_2 + " : YES")
