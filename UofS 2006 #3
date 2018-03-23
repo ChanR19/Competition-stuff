@@ -1,0 +1,39 @@
+runs = int(input())
+    
+for i in range(runs):
+  course = input()
+  raw_input = input().split(" ")
+  people = int(raw_input[0])
+  works = int(raw_input[1])
+
+  raw_weights = input().split(" ")
+  weights = []
+  for weight in raw_weights:
+    weights.append(float(weight))
+  W = sum(weights)
+  
+  output = course + "\n"
+  for j in range(people):
+    raw_input2 = input().split(" ")
+    output += raw_input2[0]
+    
+    grade1 = 0
+    for k in range(1,len(raw_input2)):
+      grade1 += float(raw_input2[k])*float(weights[k-1])
+    grade2 = round(grade1/W,2)
+    output += " " + str(grade2) + " "
+    if grade2 < 60:
+      output += "F\n"
+    elif grade2 < 70:
+      output += "D\n"
+    elif grade2 < 80:
+      output += "C\n"
+    elif grade2 < 90:
+      output += "B\n"
+    else:
+      output += "A\n"
+    
+  print(output)
+    
+    
+  
